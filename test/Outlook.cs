@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Office.Tools.Ribbon;
 using outlook = Microsoft.Office.Interop.Outlook;
+using System.Windows.Forms;
 
 namespace test
 {
@@ -19,6 +20,7 @@ namespace test
 
             outlook.Application app = Globals.ThisAddIn.Application;
             outlook.Explorer exp = app.ActiveExplorer();
+            int atts = 0;
             if (exp.Selection.Count > 0)
             {
                 for(int i = 1; i<=exp.Selection.Count; i++)
@@ -30,13 +32,14 @@ namespace test
                             (selObject as outlook.MailItem);
                         foreach(outlook.Attachment att in mailItem.Attachments)
                         {
-                            System.Windows.Forms.MessageBox.Show(att.FileName);
+                            atts++;
                         }
                     }
                     
                 }
 
             }
+            
 
         }
     }
