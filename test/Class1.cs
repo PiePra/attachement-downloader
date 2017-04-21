@@ -9,11 +9,16 @@ namespace test
 {
     public class Email
     {
-        outlook.MailItem Mail;
+        private outlook.MailItem Mail;
 
         public Email(outlook.MailItem Mail)
         {
             this.Mail = Mail;
+        }
+
+        public outlook.MailItem getMail()
+        {
+            return Mail;
         }
 
         public override string ToString()
