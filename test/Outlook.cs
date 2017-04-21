@@ -12,15 +12,16 @@ namespace test
     {
         private void Outlook_Load(object sender, RibbonUIEventArgs e)
         {
-
+           
         }
 
         private void test_Click(object sender, RibbonControlEventArgs e)
         {
 
+            List <Email> mls = new List<Email>();
+
             outlook.Application app = Globals.ThisAddIn.Application;
             outlook.Explorer exp = app.ActiveExplorer();
-            int atts = 0;
             if (exp.Selection.Count > 0)
             {
                 for(int i = 1; i<=exp.Selection.Count; i++)
@@ -30,13 +31,13 @@ namespace test
                     {
                         outlook.MailItem mailItem =
                             (selObject as outlook.MailItem);
-                        foreach(outlook.Attachment att in mailItem.Attachments)
-                        {
-                            atts++;
-                        }
+                        mls.Add(new Email(mailItem));
                     }
-                    
+
                 }
+                Form1 Form = new Form1();
+                Form.setmls(mls);
+                Form.Show();
 
             }
             
