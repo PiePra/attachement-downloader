@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Office.Tools.Ribbon;
-using outlook = Microsoft.Office.Interop.Outlook;
-using System.Windows.Forms;
+using Microsoft.Office.Interop.Outlook;
 
 namespace test
 {
@@ -18,26 +17,25 @@ namespace test
         private void test_Click(object sender, RibbonControlEventArgs e)
         {
 
-            List <Email> mls = new List<Email>();
+            List<MailItem> mls = new List<MailItem>();
 
-            outlook.Application app = Globals.ThisAddIn.Application;
-            outlook.Explorer exp = app.ActiveExplorer();
+            Application app = Globals.ThisAddIn.Application;
+            Explorer exp = app.ActiveExplorer();
             if (exp.Selection.Count > 0)
             {
                 for(int i = 1; i<=exp.Selection.Count; i++)
                 {
                     Object selObject = exp.Selection[i];
-                    if (selObject is outlook.MailItem)
+                    if (selObject is MailItem)
                     {
-                        outlook.MailItem mailItem =
-                            (selObject as outlook.MailItem);
-                        mls.Add(new Email(mailItem));
+                        MailItem mailItem =
+                            (selObject as MailItem);
+                        mls.Add(mailItem);
                     }
 
                 }
-                Form1 Form = new Form1();
-                Form.setmls(mls);
-                Form.Show();
+                MainWindow mwin = new MainWindow(mls);
+                mwin.ShowDialog();
 
             }
             

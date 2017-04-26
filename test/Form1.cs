@@ -13,7 +13,7 @@ namespace test
 {
     public partial class Form1 : Form
     {
-        private List<Email> mls;
+        private Dictionary<string, Email> mls;
 
         public Form1()
         {
@@ -26,15 +26,15 @@ namespace test
             textBox1.Text = @"H:\";
         }
 
-        public void setmls(List<Email> mls)
+        public void setmls(Dictionary<string, Email> mls)
         {
             this.mls = mls;
         }
 
         private void fillListbox()
         {
-            foreach (Email ml in mls)
-                listBox1.Items.Add(ml);
+            foreach (KeyValuePair<string, Email> ml in mls)
+                listBox1.Items.Add(ml.Key);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,32 +51,32 @@ namespace test
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string link = textBox1.Text;
-            this.Close();
-            foreach (Email mail in listBox1.Items)
-            {
-                outlook.Attachments atts = mail.getMail().Attachments;
-                outlook.MailItem ml = mail.getMail();
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    string link = textBox1.Text;
+        //    this.Close();
+        //    foreach (Email in listBox1.Items)
+        //    {
+        //        outlook.Attachments atts = mail.getMail().Attachments;
+        //        outlook.MailItem ml = mail.getMail();
 
-                if (atts.Count > 0)
-                {
-                    switch (ml.BodyFormat)
-                    {
-                        case outlook.OlBodyFormat.olFormatHTML:
-                            string html = "<html><body>";
-                            foreach (outlook.Attachment att in atts)
-                            {
-                                html += "<p><a href =\"" + link + att.FileName + "\">" + att.FileName + "</a></p>";
-                                att.SaveAsFile(link + att.FileName);
-                            }
-                            html += "</body ></html>";
-                            ml.HTMLBody = html + ml.HTMLBody;
-                                break;
-                    }
-                }
-            }
-        }
+        //        if (atts.Count > 0)
+        //        {
+        //            switch (ml.BodyFormat)
+        //            {
+        //                case outlook.OlBodyFormat.olFormatHTML:
+        //                    string html = "<html><body>";
+        //                    foreach (outlook.Attachment att in atts)
+        //                    {
+        //                        html += "<p><a href =\"" + link + att.FileName + "\">" + att.FileName + "</a></p>";
+        //                        att.SaveAsFile(link + att.FileName);
+        //                    }
+        //                    html += "</body ></html>";
+        //                    ml.HTMLBody = html + ml.HTMLBody;
+        //                        break;
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

@@ -11,11 +11,14 @@ namespace test
     {
         private outlook.MailItem Mail;
 
+        outlook.Attachment anh;
+
         public Email(outlook.MailItem Mail)
         {
             this.Mail = Mail;
+            
         }
-
+        
         public outlook.MailItem getMail()
         {
             return Mail;
