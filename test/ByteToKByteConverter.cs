@@ -13,13 +13,13 @@ namespace test
         {
             if (Double.TryParse(value.ToString(), out double val))
             {
-                if (val < 1000) return (double)value + "B";
-                else if (val < 1000000) return Format((double)value / 1000) + "KB";
-                else if (val < 1000000000) return Format((double)value / 1000000) + "MB";
-                else if (val < 1000000000000) return Format((double)value / 1000000000) + "GB";
-                else if (val < 1000000000000000) return Format((double)value / 1000000000000) + "TB";
-                else if (val < 1000000000000000000) return Format((double)value / 1000000000000000) + "PB";
-                else return Format((double)value / 1000000000000000000) + "ZB";
+                if (val < 1000) return val + "B";
+                else if (val < 1000000) return Format(val / 1000) + "KB";
+                else if (val < 1000000000) return Format(val / 1000000) + "MB";
+                else if (val < 1000000000000) return Format(val / 1000000000) + "GB";
+                else if (val < 1000000000000000) return Format(val / 1000000000000) + "TB";
+                else if (val < 1000000000000000000) return Format(val / 1000000000000000) + "PB";
+                else return Format(val / 1000000000000000000) + "ZB";
             }
             return value;
         }
