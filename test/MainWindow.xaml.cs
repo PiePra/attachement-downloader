@@ -34,6 +34,7 @@ namespace test
         private void FillControls()
         {
             ListViewEmail.ItemsSource = MLS;
+            TreeViewEmail.ItemsSource = MLS;
         }
 
         private void pickfolder_click(object sender, RoutedEventArgs e)

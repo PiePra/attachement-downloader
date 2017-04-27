@@ -46,5 +46,12 @@
         </ListView>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="107,10,0,0" TextWrapping="Wrap" Text="{l:EnvironmentVar HomeDrive}" VerticalAlignment="Top" Width="189"/>
         <Button x:Name="pickfolder" Content="Start" HorizontalAlignment="Left" Margin="311,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.233,0.421" Click="pickfolder_click"/>
+        <TreeView x:Name ="TreeViewEmail" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type l:MenuItem}" ItemsSource="{Binding Subject}">
+                    <TextBlock Text="{Binding Subject}"></TextBlock>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
 </Window>

@@ -175,6 +175,7 @@
   <ItemGroup>
     <Compile Include="ByteToKByteConverter.cs" />
     <Compile Include="EnvironmentVarExtension.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="Outlook.cs">
       <SubType>Component</SubType>
     </Compile>
