@@ -22,19 +22,13 @@ namespace test
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<MailItem> MLS = null;
-
-        public MainWindow(List<MailItem> mls)
+        public MainWindow()
         {
+            ViewModel Model = new ViewModel();
+            Model.fillMails();
+            this.DataContext = Model;
             InitializeComponent();
-            MLS = mls;
-            FillControls();
-        }
 
-        private void FillControls()
-        {
-            ListViewEmail.ItemsSource = MLS;
-            TreeViewEmail.ItemsSource = MLS;
         }
 
         private void pickfolder_click(object sender, RoutedEventArgs e)
@@ -42,7 +36,11 @@ namespace test
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK) tbFolder.Text= dialog.SelectedPath;
             }
         }
+
+
+
     }
 }

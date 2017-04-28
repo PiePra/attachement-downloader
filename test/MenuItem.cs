@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace test
 {
-    class MenuItem
+    public class MenuItem
     {
         public MenuItem()
         {

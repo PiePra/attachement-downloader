@@ -175,6 +175,7 @@
   <ItemGroup>
     <Compile Include="ByteToKByteConverter.cs" />
     <Compile Include="EnvironmentVarExtension.cs" />
+    <Compile Include="Mail.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Outlook.cs">
       <SubType>Component</SubType>
@@ -188,6 +189,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Outlook.resx">
       <DependentUpon>Outlook.cs</DependentUpon>
       <SubType>Designer</SubType>
