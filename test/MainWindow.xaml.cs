@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,11 @@ namespace test
             }
         }
 
-
-
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanel panel = (StackPanel)((Button)sender).Parent;
+            System.Windows.Forms.MessageBox.Show(panel.Parent.ToString());
+            //((ObservableCollection<MailItem>)trvMails.DataContext).Remove();
+        }
     }
 }
